@@ -1,1 +1,13 @@
-<h1>Home Page</h1>
+<h1>{{ current-user.username }}</h1>
+<p>{{ current-user.email }}</p>
+
+<div class="col-md-8">
+    <table>
+      <tr ng-repeat="item in home.items">
+        <td>{{ item.name }}</td>
+        <td>Delete</td>
+      <tr>
+    </table>
+</div>
+
+<a ui-sref="new">New Item</a>

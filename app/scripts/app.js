@@ -1,5 +1,5 @@
 (function() {
-  function config($locationProvider, $stateProvider) {
+  function config($locationProvider, $stateProvider, $sceProvider) {
     $locationProvider
       .html5Mode({
         enabled: true,
@@ -11,10 +11,22 @@
         url: '/',
         controller: 'HomeCtrl as home',
         templateUrl: '/templates/home.html'
+      })
+      .state('new', {
+        url:'/new',
+        controller: 'NewCtrl as new',
+        templateUrl: 'templates/new.html'
+      })
+      .state('login', {
+        url: '/login',
+        controller: 'LoginCtrl as login',
+        templateUrl: '/templates/login.html'
       });
+
+      $sceProvider.enabled(false)
   }
 
   angular
     .module('blocitOff', ['ui.router'])
-    .config(config);
+    .config(config)
 })();
