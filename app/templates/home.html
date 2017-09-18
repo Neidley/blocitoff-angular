@@ -1,14 +1,26 @@
-<h1>{{ current-user.username }}</h1>
-<p>{{ current-user.email }}</p>
+<div class="jumbotron">
+  <h1>Blocitoff</h1>
+  <h3>{{ home.username }}</h3>
+  <p>{{ home.email }}</p>
+</div>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Active Tasks</a></li>
+      <li><a ui-sref="history">Task History</a></li>
+    </ul>
+  </div>
+</nav>
 
 <div class="col-md-8">
     <table>
-      <th>Current Tasks</th>
-      <tr ng-repeat="item in home.items" ng-hide="item.completed">
-        <td>{{ item.name }}</td>
-        <td>Delete</td>
+      <th>Active Tasks</th>
+      <th>Completed</th>
+      <tr ng-repeat="item in home.items" ng-hide ="checked">
+        <td data="item.id">{{ item.name }}</td>
+        <td class="text-center"><input type="checkbox" ng-model="checked"></td>
       <tr>
     </table>
+    <a ui-sref="new">New Item</a>
 </div>
-
-<a ui-sref="new">New Item</a>

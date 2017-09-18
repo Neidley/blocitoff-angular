@@ -17,6 +17,11 @@
         controller: 'NewCtrl as new',
         templateUrl: 'templates/new.html'
       })
+      .state('history', {
+        url:'/history',
+        controller: 'HistoryCtrl as history',
+        templateUrl: 'templates/history.html'
+      })
       .state('login', {
         url: '/login',
         controller: 'LoginCtrl as login',

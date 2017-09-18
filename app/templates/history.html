@@ -1,0 +1,26 @@
+<div class="jumbotron">
+  <h1>Blocitoff</h1>
+  <h3>{{ history.username }}</h3>
+  <p>{{ history.email }}</p>
+</div>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li><a ui-sref="home">Active Tasks</a></li>
+      <li class="active"><a href="#">Task History</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="col-md-8">
+    <table>
+      <th>Task History</th>
+      <th>Delete</th>
+      <tr ng-repeat="item in history.items" ng-hide="item.completed">
+        <td data="item.id"><del>{{ item.name }}</del></td>
+        <td><button class="btn-danger btn-sm"  type="button"
+ng-click="history.deleteTask()" confirm="Are you sure?">Delete</button></td>
+      <tr>
+    </table>
+</div>
