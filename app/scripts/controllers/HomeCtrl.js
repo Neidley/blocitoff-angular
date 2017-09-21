@@ -7,10 +7,9 @@
       console.log(data.data)
     }.bind(this))
 
-    this.completeTask = function() {
-      console.log('clicked')
-      $http.put('http://localhost:4000/items/' + item.id, true || false, [])
-           .then()
+    this.toggleCompleted = function(item) {
+      $http.put('http://localhost:4000/items/' + item.id, {completed: !item.completed}, [])
+           .then(window.location.reload())
     }
   }
 

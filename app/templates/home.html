@@ -17,9 +17,9 @@
     <table>
       <th>Active Tasks</th>
       <th>Completed</th>
-      <tr ng-repeat="item in home.items" ng-hide ="checked">
-        <td data="item.id">{{ item.name }}</td>
-        <td class="text-center"><input type="checkbox" ng-model="checked"></td>
+      <tr ng-repeat="item in home.items" ng-hide="item.completed">
+        <td>{{ item.name }}</td>
+        <td class="checkbox"><input type="checkbox" ng-model="checked" ng-click="home.toggleCompleted(item)"></td>
       <tr>
     </table>
     <a ui-sref="new">New Item</a>

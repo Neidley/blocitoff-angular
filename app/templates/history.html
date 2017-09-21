@@ -16,11 +16,13 @@
 <div class="col-md-8">
     <table>
       <th>Task History</th>
+      <th>Un-Complete</th>
       <th>Delete</th>
-      <tr ng-repeat="item in history.items" ng-hide="item.completed">
-        <td data="item.id"><del>{{ item.name }}</del></td>
+      <tr ng-repeat="item in history.items" ng-show="item.completed">
+        <td><del>{{ item.name }}</del></td>
+        <td class="checkbox"><input type="checkbox" ng-model="checked" ng-click="history.toggleCompleted(item)"></td>
         <td><button class="btn-danger btn-sm"  type="button"
-ng-click="history.deleteTask()" confirm="Are you sure?">Delete</button></td>
+ng-click="history.deleteTask(item)">Delete</button></td>
       <tr>
     </table>
 </div>

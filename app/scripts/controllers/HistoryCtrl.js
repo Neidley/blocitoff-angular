@@ -6,10 +6,14 @@
       this.username = data.data[0].user.username
     }.bind(this))
 
-    this.deleteTask = function() {
-        console.log('clicked')
-        $http.delete('http://localhost:4000/items/' + item.id, [])
-             .then()
+    this.deleteTask = function(item) {
+      $http.delete('http://localhost:4000/items/' + item.id, [])
+           .then(window.location.reload())
+    }
+
+    this.toggleCompleted = function(item) {
+      $http.put('http://localhost:4000/items/' + item.id, {completed: !item.completed}, [])
+           .then(window.location.reload())
     }
   }
 
