@@ -1,10 +1,19 @@
 (function() {
-  function HistoryCtrl($http) {
-    $http.get('http://localhost:4000/').then(function(data){
-      this.items = data.data
-      this.email = data.data[0].user.email
-      this.username = data.data[0].user.username
-    }.bind(this))
+  function HistoryCtrl($http, $cookies) {
+    var id = $cookies.get('user')
+    if(id) {
+      $http.get('http://localhost:4000/?id=' + id).then(function(data){
+        this.items = data.data
+        this.email = data.data[0].user.email
+      }.bind(this))
+    } else {
+      window.location = '/login'
+    }
+
+    this.logOut = function() {
+      $cookies.remove('user')
+      window.location = '/login'
+    }
 
     this.deleteTask = function(item) {
       $http.delete('http://localhost:4000/items/' + item.id, [])
@@ -19,5 +28,5 @@
 
   angular
     .module('blocitOff')
-    .controller('HistoryCtrl', ['$http', HistoryCtrl]);
+    .controller('HistoryCtrl', ['$http', '$cookies', HistoryCtrl]);
 })();

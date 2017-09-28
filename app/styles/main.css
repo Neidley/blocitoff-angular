@@ -6,6 +6,11 @@ body {
   padding-bottom: 50px
 }
 
+.login, .signup {
+  display:inline-flex;
+  padding-left: 15px;
+}
+
 td, th {
   padding-left: 10px !important;
   padding-right: 10px !important!;

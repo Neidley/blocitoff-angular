@@ -7,16 +7,16 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Login</a></li>
-      <li><a ui-sref="signup">Sign Up</a></li>
+      <li><a ui-sref="login">Login</a></li>
+      <li class="active"><a href="#">Sign Up</a></li>
     </ul>
   </div>
 </nav>
 
-<div class="login">
-  <form method="post" ng-submit="login.submitLogin(email, password)">
+<div class="signup">
+  <form method="post" ng-submit="signup.createUser(username, email, password, password_confirmation)">
     <div class="form-group">
-      <h4>Login<h4>
+      <h4>Sign Up!</h4>
     </div>
     <div class="form-group">
       <input type="text" name="email" value="" placeholder="email" ng-model="email">
@@ -24,6 +24,9 @@
     <div class="form-group">
       <input type="password" name="password" value="" placeholder="password" ng-model="password">
     </div>
-    <input type="submit" name="" value="Go!">
+    <div class="form-group">
+      <input type="password" name="password confirmation" placeholder="confirm password" ng-model="password_confirmation">
+    </div>
+    <input type="submit" name="" value="Sign Up!">
   </form>
 </div>

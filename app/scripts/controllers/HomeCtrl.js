@@ -1,11 +1,19 @@
 (function() {
-  function HomeCtrl($http) {
-    $http.get('http://localhost:4000/').then(function(data){
-      this.items = data.data
-      this.email = data.data[0].user.email
-      this.username = data.data[0].user.username
-      console.log(data.data)
-    }.bind(this))
+  function HomeCtrl($http, $cookies) {
+    var id = $cookies.get('user')
+    if (id){
+      $http.get('http://localhost:4000/?id=' + id).then(function(data){
+        this.items = data.data
+        this.email = data.data[0].user.email
+      }.bind(this))
+    } else {
+      window.location = '/login'
+    }
+
+    this.logOut = function() {
+      $cookies.remove('user')
+      window.location = '/login'
+    }
 
     this.toggleCompleted = function(item) {
       $http.put('http://localhost:4000/items/' + item.id, {completed: !item.completed}, [])
@@ -15,5 +23,5 @@
 
   angular
     .module('blocitOff')
-    .controller('HomeCtrl', ['$http', HomeCtrl]);
+    .controller('HomeCtrl', ['$http', '$cookies', HomeCtrl]);
 })();

@@ -26,12 +26,17 @@
         url: '/login',
         controller: 'LoginCtrl as login',
         templateUrl: '/templates/login.html'
+      })
+      .state('signup', {
+        url:'/signup',
+        controller: 'SignUpCtrl as signup',
+        templateUrl: '/templates/signup.html'
       });
 
       $sceProvider.enabled(false)
   }
 
   angular
-    .module('blocitOff', ['ui.router'])
+    .module('blocitOff', ['ui.router', 'ngCookies'])
     .config(config)
 })();
