@@ -18,6 +18,7 @@
     this.deleteTask = function(item) {
       $http.delete('http://localhost:4000/items/' + item.id, [])
            .then(window.location.reload())
+           .catch(function(){})
     }
 
     this.toggleCompleted = function(item) {

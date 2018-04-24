@@ -3,9 +3,10 @@
     var id = $cookies.get('user')
     if(id) {
       this.addTask = function(task) {
-        $http.post('http://localhost:4000/items', {item: {user: user, name: task}})
-             .then(alert('Task has been added!'),
-             window.location = '/'
+        $http.post('http://localhost:4000/items', {item: {user: id, name: task}})
+             .then(
+               alert('Task has been added!'),
+               window.location = '/'
            )
       }
     } else {
@@ -16,7 +17,7 @@
       $cookies.remove('user')
       window.location = '/login'
     }
-    
+
   }
 
   angular

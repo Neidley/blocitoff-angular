@@ -1,12 +1,12 @@
 (function() {
   function LoginCtrl($http, $cookies) {
     this.submitLogin = function(email, password){
-      $http.post('http://localhost:4000/auth/sign_in', {email: email, password: password})
+      $http.post('http://localhost:4000/sessions', {email: email, password: password})
            .then(function(data){
-             $cookies.put('user', data.data.data.id)
+             $cookies.put('user', data.data.id)
              window.location = '/'
            }, function(){
-               alert('Something went wrong. Try again.')
+               alert('Something went wrong. Please try again.')
            }
          );
     }
